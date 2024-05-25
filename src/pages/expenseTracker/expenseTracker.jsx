@@ -37,7 +37,13 @@ const signUserOut = async()=>{
   return (
     <>
     <div className='expense-Tracker'>
-      <h1>{name}'s Expense Tracker</h1>
+    {
+        profilePhoto && <div className='profile'>
+        <img className='profile-photo' src={profilePhoto}/>
+        <h1 className='main_txt'>{name}'s Expense Tracker</h1>
+        <button className='sign-out-button' onClick={signUserOut}>sign out</button>
+        </div>
+      }
       <div className='balance'>
         <h3>Your Balance</h3>
         {balance >= 0 ? <h2> ${balance}</h2> : <h2> -${balance * -1}</h2>}
@@ -84,12 +90,6 @@ const signUserOut = async()=>{
         <label htmlFor='income'>Income</label>
         <button type='submit'>Add</button>
       </form>
-      {
-        profilePhoto && <div className='profile'>
-        <img className='profile-photo' src={profilePhoto}/>
-        <button className='sign-out-button' onClick={signUserOut}>sign out</button>
-        </div>
-      }
     </div>
     <div className='transcation'>
     <h3>Transcation</h3>

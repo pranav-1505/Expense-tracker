@@ -6,10 +6,13 @@
     align-items: center;
     color: #023047;
   }
-  
-  .expense-tracker h1 {
-    font-size: 40px;
+  .main_txt{
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    width: 80%;
   }
+
   .expense-tracker button {
     margin-left: 10px;
   }
