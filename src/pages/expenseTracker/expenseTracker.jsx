@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import "../../pages/expenseTracker/style.css";
 import { auth } from "../../config/firebase-config";
 
+
 const ExpenseTracker = () => {
 const {addTransaction} = useAddTranscation();
 const { transcation, transactionTotals } = useGetTranscation();
@@ -23,6 +24,9 @@ const onSubmit =(e)=>{
   addTransaction({description,transcationAmount,transcationType})
   setDescription("")
   setTranscationAmount("")
+}
+function handleClick() {
+  navigate("/expenseList");
 }
 
 const signUserOut = async()=>{
@@ -44,68 +48,62 @@ const signUserOut = async()=>{
         <button className='sign-out-button' onClick={signUserOut}>sign out</button>
         </div>
       }
-      <div className='balance'>
-        <h3>Your Balance</h3>
-        {balance >= 0 ? <h2> ${balance}</h2> : <h2> -${balance * -1}</h2>}
-      </div>
-      <div className='summary'>
-        <div className='Income'>
-          <h3>Income</h3>
-          <p>${income}</p>
+      <div className='main_balance'>
+          <div className='Income'>
+            <h3>Income</h3>
+            <p>${income}</p>
+          </div>
+          <div className='balance'>
+            <h3>Your Balance</h3>
+          {balance >= 0 ? <h2> ${balance}</h2> : <h2> -${balance * -1}</h2>}
+          </div>
+          <div className='expense'>
+            <h3>Expenses</h3>
+            <p>${expenses}</p>
+          </div>
         </div>
-        <div className='expense'>
-          <h3>Expenses</h3>
-          <p>${expenses}</p>
+        <form className='add-transcation' onSubmit={onSubmit}>
+        <label className="custom-field one">
+          <input  type="text"
+          value={description}
+            required 
+            onChange={(e)=>setDescription(e.target.value)}
+          />
+          <span className="placeholder">Enter Text</span>
+        </label>
+        <label className="custom-field one">
+          <input  type="number" 
+           value={transcationAmount}
+            required 
+            onChange={(e)=>setTranscationAmount(e.target.value)}
+          />
+          <span className="placeholder">Enter Amount</span>
+        </label>
+          <label htmlFor='expense' className="input-radio-label">
+          <input 
+          className="input-radio off"
+          type="radio"  
+          id="expense" 
+          value="expense"
+          checked={transcationType ==="expense"}
+          onChange={(e)=>setTranscationType(e.target.value)}
+          />
+          Expense</label>
+          <label htmlFor='income' className="input-radio-label">
+          <input 
+          className="input-radio on"
+          type="radio"  
+          id="income" 
+          value="income"
+          checked={transcationType ==="income"}
+          onChange={(e)=>setTranscationType(e.target.value)}
+          />
+          Income</label>
+          <button type='submit' className='subscribe'>Add</button>
+        </form>
+        <div className='main_list'>
+          <button onClick={handleClick}>Expense List</button>
         </div>
-      </div>
-      <form className='add-transcation' onSubmit={onSubmit}>
-        <input
-         type="text"
-         placeholder='Description'
-         value={description}
-         required 
-         onChange={(e)=>setDescription(e.target.value)}
-         />
-        <input type="number" 
-        placeholder='Amount' 
-        value={transcationAmount}
-        required   
-        onChange={(e)=>setTranscationAmount(e.target.value)}
-        />
-        <input 
-        type="radio"  
-        id="expense" 
-        value="expense"
-        checked={transcationType ==="expense"}
-        onChange={(e)=>setTranscationType(e.target.value)}
-        />
-        <label htmlFor='expense'>Expense</label>
-        <input 
-        type="radio"  
-        id="income" 
-        value="income"
-        checked={transcationType ==="income"}
-        onChange={(e)=>setTranscationType(e.target.value)}
-        />
-        <label htmlFor='income'>Income</label>
-        <button type='submit'>Add</button>
-      </form>
-    </div>
-    <div className='transcation'>
-    <h3>Transcation</h3>
-    <ul>
-      {transcation.map((transcation)=>{
-        const {description, transcationAmount, transcationType}  = transcation;
-        return(
-          <li>
-            <h4>{description}</h4>
-            <p>
-            {""}
-            ${transcationAmount} . <label>{transcationType}</label></p>
-          </li>
-        );
-      })}
-    </ul>
     </div>
     </>
   )

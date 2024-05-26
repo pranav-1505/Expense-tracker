@@ -1,52 +1,74 @@
+
+.expense-Tracker{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.add-transcation{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 600px;
+  gap: 20px;
+}
 .expense-tracker {
-    width: 100vw;
+ 
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     color: #023047;
   }
+  .main_balance{
+    display: flex;
+    width: 70%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 5px solid #7FFFD4;
+    border-radius: 30px;
+  }
   .main_txt{
     text-align: left;
     display: flex;
     justify-content: flex-start;
-    width: 80%;
+    width: 74%;
+    margin-left: 20px;
+ font-family:"Roboto Condensed";
+ font-size:30px;
+ color: #333;
   }
 
-  .expense-tracker button {
-    margin-left: 10px;
-  }
+
   .profile {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    width: 100%;
     align-items: center;
-    margin-left: 200px;
   }
   .profile-photo {
-    width: 200px;
+    width: 100px;
     border-radius: 50%;
+    border: 2px solid #666;
   }
   
   .sign-out-button {
-    border: none;
-    margin-top: 50px;
-    width: 150px;
-    background: #3498db;
-    background-image: linear-gradient(to bottom, #3498db, #2980b9);
-    border-radius: 10px;
-    color: #ffffff;
-    font-size: 22px;
-    font-weight: bold;
-    padding: 10px 20px 10px 20px;
-    text-decoration: none;
+    width: max-content;
+    height: max-content;
+    background: #3eab81;
+    border: 2px solid #7FFFD4;
+    color: #fff;
+    padding: 0.5em 1.3em;
+    border-radius: 25px;
+    font-size: 1.6vw;
+    cursor: pointer;
+    font-family: 'Roboto Condensed';
   }
   
   .sign-out-button:hover {
-    background: #3cb0fd;
-  
-    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-    text-decoration: none;
-    cursor: pointer;
+    transform: scale(0.9);
+    transition: 0.3s ease;
   }
   
   .transactions {
@@ -58,3 +80,190 @@
     overflow: auto;
     border: 3px solid #023047;
   }
+/* input box**************************** */
+  .custom-field.one input {
+    background: none;
+    border: 2px solid #ddd;
+    transition: border-color 0.3s ease;
+  }
+  
+  .custom-field.one input + .placeholder {
+    left: 8px;
+    padding: 0 5px;
+  }
+  
+  .custom-field.one input.dirty,
+  .custom-field.one input:not(:placeholder-shown),
+  .custom-field.one input:focus {
+    border-color: #7FFFD4;
+    transition-delay: 0.1s
+  }
+  
+  .custom-field.one input:focus + .placeholder {
+    top: 0;
+    font-size: 10px;
+    color: #222;
+    background: #fff;
+    width: auto
+  }
+
+  .custom-field {
+    position: relative;
+    font-size: 14px;
+    border-top: 20px solid transparent;
+    margin-bottom: 5px;
+    display: inline-block;
+    --field-padding: 12px;
+  }
+  
+  .custom-field input {
+    border: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #f2f2f2;
+    padding: var(--field-padding);
+    border-radius: 3px;
+    width: 250px;
+    outline: none;
+    font-size: 14px;
+  }
+  
+  .custom-field .placeholder {
+    position: absolute;
+    left: var(--field-padding);
+    width: calc(100% - (var(--field-padding) * 2));
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    top: 22px;
+    line-height: 100%;
+    transform: translateY(-50%);
+    color: #aaa;
+    transition: 
+      top 0.3s ease,
+      color 0.3s ease,
+      font-size 0.3s ease;
+  }  
+
+/* radio button*************************** */
+  .input-radio {
+    box-shadow: 0px 0px 0px 1px #6d6d6d;
+    font-size: 3em;
+    width: 25px;
+    height: 25px;
+    margin-right: 11px;
+    border: 4px solid #fff;
+    background-clip: border-box;
+    border-radius: 50%;
+    appearance: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-top: -1px;
+
+}
+.input-radio-label{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.5vw;
+  font-family: 'Roboto Condensed';
+}
+
+.form label {
+    display: flex;
+    margin: 10px 15px;
+}
+
+.input-radio.on:checked {
+    box-shadow: 0px 0px 0px 4px #00eb27;
+    background-color: #51ff6e;
+}
+.input-radio.off:checked {
+    box-shadow: 0px 0px 0px 4px #eb0000;
+    background-color: #ff5151;
+}
+ /* sumbit************************ */
+
+ .subscribe {
+  width: max-content;
+  height: max-content;
+  background: #3eab81;
+  border: 2px solid #7FFFD4;
+  color:#fff;
+  padding: 0.3em 2em;
+  border-radius: 25px;
+  font-size: 1.6vw;
+  cursor: pointer;
+  font-family: 'Roboto Condensed';
+}
+
+.subscribe:hover {
+  transform: scale(0.9);
+  transition: 0.3s ease;
+}
+.main_list{
+  position: fixed;
+  bottom: 20px;
+}
+.main_list button{
+  width: max-content;
+  height: max-content;
+  background: #3eab81;
+  border: 2px solid #7FFFD4;
+  color:#fff;
+  padding: 0.5em 1em;
+  border-radius: 25px;
+  font-size: 1.6vw;
+  cursor: pointer;
+  font-family: 'Roboto Condensed';
+}
+.main_list button:hover {
+  transform: scale(0.9);
+  transition: 0.3s ease;
+}
+.backToMain {
+  width: max-content;
+  height: max-content;
+  background: #3eab81;
+  border: 2px solid #7FFFD4;
+  color:#fff;
+  padding: 0.5em 1em;
+  border-radius: 25px;
+  font-size: 1.6vw;
+  cursor: pointer;
+  font-family: 'Roboto Condensed';
+}
+.backToMain:hover {
+  transform: scale(0.9);
+  transition: 0.3s ease;
+}
+.Income, .balance, .expense{
+  font-family: 'Roboto Condensed';
+}
+
+
+/* *********************translist */
+.transcation{
+  width: 100%;
+  height: 89%;
+  position: absolute;
+
+}
+.trnslist{
+  list-style: none;
+    text-align: left;
+}
+.trnslist li{
+  border: 2px solid #333;
+  width: 20%;
+  height: max-content;
+  padding: 0.5em 5em;
+  display: flex;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
